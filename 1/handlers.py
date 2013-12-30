@@ -12,6 +12,7 @@ from sae.taskqueue import Task, TaskQueue
 
 DEBUG = False
 
+
 urls = (
     '/', 'Hello',
     '/log', 'Log',
@@ -236,7 +237,8 @@ def create_seg_task(f, file_name, zip_file=False):
 
     def _process_line(line):
         # only segment the title and keyword
-        tmp = line.split('\t')
+        # XXX bug: when content contains €, result is broken
+        tmp = line.replace('€', '').split('\t')
         if len(tmp) < 4:
             log_message('content format error: ' + line)
             return
