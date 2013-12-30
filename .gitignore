@@ -1,0 +1,5 @@
+.svnignore
+*.tmp
+.svn
+*.pyc
+*.wsgic
